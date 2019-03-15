@@ -21,9 +21,9 @@ exports.handler = (event, context, callback) => {
 
   const { name, email, message } = JSON.parse(event.Records[0].body);
   const emailParams = {
-    Source: 'venkatesulu.valagonda@libertymutual.com',
+    Source: 'test@email.com',
     Destination: {
-      ToAddresses: ['venkatesulu.valagonda@libertymutual.com'],
+      ToAddresses: ['test@email.com'],
     },
     ReplyToAddresses: [email],
     Message: {
@@ -35,7 +35,7 @@ exports.handler = (event, context, callback) => {
       },
       Subject: {
         Charset: 'UTF-8',
-        Data: "Certainly Customer Inquiry"
+        Data: "Customer Inquiry"
       }
     }
   };
