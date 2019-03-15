@@ -1,0 +1,24 @@
+{
+  "name": "serverless-microservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "sls deploy",
+    "offline": "sls offline start"
+  },
+  "keywords": [
+    "serveless microservice",
+    "aws lambda sqs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.419.0",
+    "body-parser": "^1.18.3"
+  },
+  "devDependencies": {
+    "serverless-offline": "^3.25.4"
+  }
+}

@@ -1,0 +1,44 @@
+service: a0266185-serverless-microservice
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "sqs:SendMessage"
+        - "sqs:GetQueueUrl"
+      Resource: "arn:aws:sqs:${self:provider.region}:448855094770:A0266185Queue"
+    - Effect: "Allow"
+      Action:
+        - "sqs:ListQueues"
+      Resource: "arn:aws:sqs:${self:provider.region}:448855094770:*"
+    - Effect: "Allow"
+      Action:
+        - "ses:SendEmail"
+      Resource: "*"
+
+
+functions:
+  sender:
+    handler: message-sender.handler
+    events:
+      - http:
+          path: v1/sender
+          method: post
+  receiver:
+    handler: message-receiver.handler
+    events:
+       - sqs:
+          arn:
+            Fn::GetAtt:
+              - A0266185Queue
+              - Arn
+
+resources:
+  Resources:
+    A0266185Queue:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: "A0266185Queue"
