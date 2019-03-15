@@ -9,11 +9,11 @@ provider:
       Action:
         - "sqs:SendMessage"
         - "sqs:GetQueueUrl"
-      Resource: "arn:aws:sqs:${self:provider.region}:448855094770:A0266185Queue"
+      Resource: "arn:aws:sqs:${self:provider.region}:*:A0266185Queue"
     - Effect: "Allow"
       Action:
         - "sqs:ListQueues"
-      Resource: "arn:aws:sqs:${self:provider.region}:448855094770:*"
+      Resource: "arn:aws:sqs:${self:provider.region}:*:*"
     - Effect: "Allow"
       Action:
         - "ses:SendEmail"
